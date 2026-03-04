@@ -29,7 +29,9 @@ COPY --from=be-builder /build/olo-be/build/libs/olo-be-*.jar /app/olo-be.jar
 COPY --from=ui-builder /build/olo-ui/dist /usr/share/nginx/html
 
 # Nginx: serve UI and proxy /api to backend on 127.0.0.1:8082
-COPY docker-nginx.conf /etc/nginx/conf.d/default.conf
+# Alpine includes conf.d in main context (server not allowed); server blocks go in http.d (included inside http {}).
+RUN mkdir -p /etc/nginx/http.d
+COPY docker-nginx.conf /etc/nginx/http.d/default.conf
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
