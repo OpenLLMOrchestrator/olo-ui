@@ -1,16 +1,17 @@
 # Olo (frontend)
 
-REST-oriented frontend for Olo. Built with React, TypeScript, and Vite. Proxies `/api` to the backend (olo-be).
+REST-oriented frontend for Olo. Built with React, TypeScript, and Vite. Proxies `/api` to the backend (olo-be). **Build is Gradle-based** (Gradle runs Node/npm via the Node plugin).
 
 ## Requirements
 
-- Node.js 18+
-- npm or pnpm
+- **Gradle 8.5+** (or use the wrapper: `./gradlew` / `gradlew.bat`). If the wrapper jar is missing, run `gradle wrapper` once (requires Gradle on PATH).
+- Node.js 18+ (or let Gradle download it via the Node plugin)
 
 ## Setup
 
 ```bash
-npm install
+./gradlew npmInstall
+# or: npm install
 ```
 
 ## Run
@@ -21,12 +22,31 @@ npm run dev
 
 App runs at `http://localhost:3000`. Ensure olo-be is running on port 8082 for API calls.
 
-## Build
+## Build (Gradle)
 
 ```bash
-npm run build
+./gradlew build
+```
+
+This runs `npm install` and `npm run build` via Gradle. Output is in `dist/`. To preview:
+
+```bash
 npm run preview
 ```
+
+## Docker (combined olo-be + olo-ui in one container)
+
+The **repo root** has a combined Dockerfile that builds both the backend (olo-be) and frontend (olo-ui) and runs them in a single container. Build from the **repository root** (parent of `olo-ui/` and `olo-be/`):
+
+```bash
+# From repo root (directory that contains olo-ui and olo-be)
+docker build -t olo -f Dockerfile .
+docker run -p 3000:80 olo
+```
+
+Open `http://localhost:3000`. The UI is served by nginx; `/api` is proxied to the backend (Spring Boot) inside the same container. No separate olo-be process needed.
+
+Images are published to Docker Hub via GitHub Actions. See [.github/workflows/docker-publish.yml](../.github/workflows/docker-publish.yml). Configure repository secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` (Docker Hub access token). Pushes to `main` and version tags (`v*`) trigger a build and push. Copy-paste content for the Docker Hub repository page is in [docs/DOCKERHUB-PAGE.md](docs/DOCKERHUB-PAGE.md).
 
 ## Storybook (UI in isolation)
 
