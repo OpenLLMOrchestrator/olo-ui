@@ -1,6 +1,13 @@
 # Olo
 
-Backend (olo-be) and frontend (olo-ui) for Olo. This repo contains both; they can run as a **single Docker image** (combined container) or separately for development.
+Backend (olo-be) and frontend (olo-ui) for Olo. **This directory is the repository root.** It contains both projects; they can run as a **single Docker image** (combined container) or separately for development.
+
+## Repository layout
+
+- **Repo root** (this directory): `Dockerfile`, combined run scripts, and CI (`.github/workflows/`).
+- **olo-be/** — Spring Boot REST API (Java 17+, Maven).
+- **olo-ui/** — React frontend (TypeScript, Vite, Gradle build).
+- **docs/** — Architecture, domain boundaries, and contributor guides (shared).
 
 ## Combined Docker image (olo-be + olo-ui in one container)
 
@@ -23,4 +30,10 @@ Then open **http://localhost:3000**. Nginx serves the UI and proxies `/api` to t
 
 ## Docker Hub
 
-The combined image is published via GitHub Actions. See [olo-ui/.github/workflows/docker-publish.yml](olo-ui/.github/workflows/docker-publish.yml). Copy-paste text for the Docker Hub repository page: [olo-ui/docs/DOCKERHUB-PAGE.md](olo-ui/docs/DOCKERHUB-PAGE.md).
+The combined image is published via GitHub Actions from the **repo root**. See [.github/workflows/docker-publish.yml](.github/workflows/docker-publish.yml). Copy-paste text for the Docker Hub repository page: [olo-ui/docs/DOCKERHUB-PAGE.md](olo-ui/docs/DOCKERHUB-PAGE.md).
+
+## Docs
+
+- **Repo root:** [docs/](docs/) — architecture, domain boundaries, extensibility, layout contract, performance, stability, test strategy, UI/UX.
+- **Frontend:** [olo-ui/README.md](olo-ui/README.md) and [olo-ui/docs/](olo-ui/docs/) (e.g. Docker Hub page).
+- **Backend:** [olo-be/README.md](olo-be/README.md) and [olo-be/docs/](olo-be/docs/).

@@ -25,3 +25,7 @@ API runs at `http://localhost:8082`. All endpoints are versioned under `/api/v1/
 
 - **With Redis:** Set env `OLO_TENANT_IDS` (e.g. `olo:tenants`) for the Redis key. Tenant list is read/written there.
 - **Without Redis:** If Redis is disabled or unavailable, the backend uses an **in-memory tenant store**. Tenant CRUD works; data is lost on restart. No Redis is required for first-run or local contribution.
+
+## Docs
+
+See [docs/](docs/) for API and configuration notes and links to repo root docs.

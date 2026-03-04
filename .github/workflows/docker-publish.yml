@@ -1,6 +1,12 @@
 # Build and push combined image (olo-be + olo-ui) to Docker Hub.
-# Build from repo root: use context . and file ./Dockerfile (root must contain olo-be/ and olo-ui/).
+# This workflow must live at the repository root (same level as olo-be/ and olo-ui/).
+# Build uses context . and file ./Dockerfile (root must contain olo-be/ and olo-ui/).
 # Required secrets: DOCKERHUB_USERNAME, DOCKERHUB_TOKEN (Docker Hub access token).
+#
+# Triggers:
+#   - Push to main (except docs/markdown-only changes)
+#   - Push of version tags v* (e.g. v1.0.0)
+#   - Manual run: Actions tab → "Docker Hub Publish" → Run workflow
 
 name: Docker Hub Publish
 
