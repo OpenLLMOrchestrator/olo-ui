@@ -30,10 +30,10 @@ Then open **http://localhost:3000**. Nginx serves the UI and proxies `/api` to t
 
 ## Docker Hub
 
-The combined image is published via GitHub Actions from the **repo root**. See [.github/workflows/docker-publish.yml](.github/workflows/docker-publish.yml). Copy-paste text for the Docker Hub repository page: [olo-ui/docs/DOCKERHUB-PAGE.md](olo-ui/docs/DOCKERHUB-PAGE.md).
+The combined image is published via GitHub Actions from the **repo root**. See [.github/workflows/docker-publish.yml](.github/workflows/docker-publish.yml). **Docker Hub description:** copy-paste text for the repository page is in [docs/DOCKERHUB-PAGE.md](docs/DOCKERHUB-PAGE.md).
 
 ## Docs
 
-- **Repo root:** [docs/](docs/) — architecture, domain boundaries, extensibility, layout contract, performance, stability, test strategy, UI/UX.
-- **Frontend:** [olo-ui/README.md](olo-ui/README.md) and [olo-ui/docs/](olo-ui/docs/) (e.g. Docker Hub page).
+- **Repo root:** [docs/](docs/) — architecture, domain boundaries, extensibility, layout contract, performance, stability, test strategy, UI/UX, [Docker Hub description](docs/DOCKERHUB-PAGE.md).
+- **Frontend:** [olo-ui/README.md](olo-ui/README.md) and [olo-ui/docs/](olo-ui/docs/).
 - **Backend:** [olo-be/README.md](olo-be/README.md) and [olo-be/docs/](olo-be/docs/).

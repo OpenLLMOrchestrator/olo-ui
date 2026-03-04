@@ -9,7 +9,8 @@ COPY olo-be/ olo-be/
 RUN cd olo-be && gradle build --no-daemon -x test
 
 # ---- Build frontend (olo-ui) ----
-FROM gradle:8.5-jdk21-alpine AS ui-builder
+# Use Debian-based image: Node Gradle plugin downloads glibc Node binaries; Alpine (musl) cannot run them.
+FROM gradle:8.5-jdk21 AS ui-builder
 WORKDIR /build
 
 COPY olo-ui/ olo-ui/

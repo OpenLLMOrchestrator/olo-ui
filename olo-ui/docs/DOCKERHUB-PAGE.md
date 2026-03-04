@@ -1,5 +1,7 @@
 # Copy-paste content for Docker Hub repository page
 
+**Canonical version:** [../../docs/DOCKERHUB-PAGE.md](../../docs/DOCKERHUB-PAGE.md) (repo root docs).
+
 Use the text below (or the short version) in your Docker Hub repository **Description** so users see how to pull and run the image.
 
 ---
