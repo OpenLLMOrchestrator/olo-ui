@@ -2,11 +2,11 @@
 # Build from repo root (parent of olo-be and olo-ui).
 
 # ---- Build backend (olo-be) ----
-FROM eclipse-temurin:17-jdk-alpine AS be-builder
+FROM gradle:8.5-jdk17-alpine AS be-builder
 WORKDIR /build
 
 COPY olo-be/ olo-be/
-RUN cd olo-be && ./mvnw -B package -DskipTests
+RUN cd olo-be && gradle build --no-daemon -x test
 
 # ---- Build frontend (olo-ui) ----
 FROM gradle:8.5-jdk21-alpine AS ui-builder
@@ -21,8 +21,8 @@ RUN apk add --no-cache nginx wget
 
 WORKDIR /app
 
-# Backend jar
-COPY --from=be-builder /build/olo-be/target/olo-be-*.jar /app/olo-be.jar
+# Backend jar (Gradle outputs to build/libs/)
+COPY --from=be-builder /build/olo-be/build/libs/olo-be-*.jar /app/olo-be.jar
 
 # Frontend static files
 COPY --from=ui-builder /build/olo-ui/dist /usr/share/nginx/html

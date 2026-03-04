@@ -5,18 +5,25 @@ Spring Boot REST backend for Olo.
 ## Requirements
 
 - Java 17+
-- Maven 3.6+
+- Gradle 8.5+ (or use the wrapper: `./gradlew` / `gradlew.bat` after running `gradle wrapper` once if the wrapper jar is missing)
+
+## Build
+
+```bash
+./gradlew build
+# or: gradle build
+```
 
 ## Run
 
 ```bash
-./mvnw spring-boot:run
+./gradlew bootRun
 ```
 
 Or on Windows:
 
 ```bash
-mvnw.cmd spring-boot:run
+gradlew.bat bootRun
 ```
 
 API runs at `http://localhost:8082`. All endpoints are versioned under `/api/v1/` (e.g. health: `GET /api/v1/health`, tenants: `GET /api/v1/tenants`).
