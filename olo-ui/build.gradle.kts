@@ -3,7 +3,7 @@ plugins {
 }
 
 node {
-    version.set("20.18.0")
+    version.set("20.19.0")
     npmVersion.set("10.8.2")
     download.set(true)
 }

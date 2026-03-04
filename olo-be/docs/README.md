@@ -9,10 +9,17 @@ Backend-specific documentation. For run and build instructions, see [olo-be/READ
 - Tenants: `GET /api/v1/tenants` (and related CRUD via dropdown/tenant endpoints)
 - All endpoints are versioned under `/api/v1/`; see [STABILITY.md](../../docs/STABILITY.md) (in repo root docs) for versioning and deprecation.
 
-## Configuration
+## Configuration and environment variables
 
-- **Redis (optional):** Set env `OLO_TENANT_IDS` (e.g. `olo:tenants`) for the Redis key. If Redis is disabled or unavailable, the backend uses an in-memory tenant store (data lost on restart).
-- **Port:** 8082 (configurable via Spring Boot).
+Backend behaviour is controlled by environment variables (or Spring properties). Key ones:
+
+- **SERVER_PORT** — default 8082.
+- **SPRING_DATA_REDIS_HOST** / **SPRING_DATA_REDIS_PORT** — Redis connection (optional; if disabled, in-memory tenant store is used).
+- **OLO_TENANT_IDS** — Redis key for tenant list (default `olo:tenants`).
+- **SPRING_AUTOCONFIGURE_EXCLUDE** — set to `org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration` to disable Redis.
+- **SPRING_DATA_REDIS_PASSWORD** — Redis password when required.
+
+**Full reference (how to set in local, Docker, Compose, Kubernetes):** [ENVIRONMENT.md](../../docs/ENVIRONMENT.md) in repo root docs. Sample env files are at repo root: `.env.dev.sample`, `.env.production.sample`, `.env.demo.sample`.
 
 ## Repo root docs
 

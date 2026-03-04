@@ -12,6 +12,7 @@ Frontend-specific documentation lives here. For architecture and contributor gui
 
 From repo root, [docs/](../../docs/) includes:
 
+- **ENVIRONMENT.md** — environment variables (how to use in local, Docker, Compose); full reference for olo-be and combined image
 - **ARCHITECTURE.md** — state philosophy, store vs local state, store creation guidelines
 - **DOMAIN_BOUNDARIES.md** — runContext rules, domain boundaries, cross-domain rules
 - **EXTENSIBILITY.md** — extension API, feature flags, governance

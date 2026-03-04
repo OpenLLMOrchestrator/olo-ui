@@ -7,7 +7,7 @@ This document describes the current user interface, user experience, and technic
 ## 1. Overview
 
 - **Olo** (frontend): React + TypeScript + Vite. Runs on port 3000. Proxies `/api` to the backend.
-- **olo-be**: Spring Boot REST backend. Runs on port 8082. Serves APIs and reads/writes tenant data from Redis (key configurable via env `OLO_TENANT_IDS`).
+- **olo-be**: Spring Boot REST backend. Runs on port 8082. Serves APIs and reads/writes tenant data from Redis (key configurable via env **OLO_TENANT_IDS**). Full env reference: **docs/ENVIRONMENT.md**.
 
 The UI is a single-page application with a fixed top bar, an expandable left navigation (tenant + menu), an optional tools strip, a main content area, and an optional properties panel on the right.
 

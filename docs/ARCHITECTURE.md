@@ -271,7 +271,7 @@ This reduces friction for OSS contributors who don’t have Redis or the backend
 ## 9. Backend: first-run and Redis
 
 - The backend supports **in-memory fallback** for the tenant list when Redis is disabled or unavailable. No Redis is required for first-run or local contribution to the API; tenants are stored in memory and lost on restart.
-- For production or persistent tenants, configure Redis and set `OLO_TENANT_IDS` (e.g. `olo:tenants`). See `olo-be` README and `application.properties`.
+- For production or persistent tenants, configure Redis and set `OLO_TENANT_IDS` (e.g. `olo:tenants`). **Full env reference (local, Docker, Compose):** see **docs/ENVIRONMENT.md**. See also `olo-be` README and `application.properties`.
 
 ---
 

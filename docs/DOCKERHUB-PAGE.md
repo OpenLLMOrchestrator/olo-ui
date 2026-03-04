@@ -27,6 +27,24 @@ docker run -p 3000:80 YOUR_DOCKERHUB_USERNAME/olo-ui
 
 Then open http://localhost:3000 . No separate backend container needed.
 
+Environment variables (optional)
+--------------------------------
+Pass with -e or --env-file. Backend (Spring Boot) reads:
+
+  SERVER_PORT=8082
+  SPRING_DATA_REDIS_HOST=localhost    (or your Redis host)
+  SPRING_DATA_REDIS_PORT=6379
+  OLO_TENANT_IDS=olo:tenants          (Redis key for tenant list)
+  SPRING_DATA_REDIS_PASSWORD=...      (if Redis requires auth)
+
+To disable Redis and use in-memory tenant store (data lost on restart):
+  SPRING_AUTOCONFIGURE_EXCLUDE=org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+
+Example with external Redis:
+  docker run -p 3000:80 -e SPRING_DATA_REDIS_HOST=redis -e SPRING_DATA_REDIS_PORT=6379 YOUR_DOCKERHUB_USERNAME/olo-ui
+
+See the repo docs/ENVIRONMENT.md for full reference.
+
 Tags
 ----
 - latest — built from main
